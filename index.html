@@ -179,7 +179,7 @@ shell(){if(S.scene==='beach'&&!S.shell){S.shell=true;add('蓝色贝壳','许老�
 girl(){if(S.chapter===4){speak([{n:'小女孩',t:'我在等爸爸下班。他说今天会陪我堆一个特别大的沙堡。'},{n:'我',t:'这封信上写着：给每天坐在海边的人。也许是给你的。'},{n:'小女孩',t:'“如果以后我有小孩，我要带她看海，给她买很多冰淇淋，还要陪她堆一个特别大的沙堡。”'},{n:'小女孩',t:'原来爸爸小时候也喜欢沙堡！'}]);setTimeout(()=>{if(!S.letters[3]){S.letters[3]=true;S.chapter=5;toast('第四封信已送达');update()}},270);return}if(S.chapter>=5)toast('小女孩的爸爸已经来了，两人正认真把沙堡加高。');else toast('小女孩专心地堆着沙堡。')},
 crab(){S.crab=Math.min(3,S.crab+1);if(S.crab<3)toast(`小螃蟹横着跑走了！再找找它吧（${S.crab}/3）`);else{toast('解锁：和螃蟹捉迷藏');add('螃蟹的脚印','小小的脚印一直延伸到潮水边。')}let c=current.find(o=>o.key==='crab');if(c){c.x=25+Math.random()*55;c.y=71+Math.random()*8;c.el.style.left=c.x+'%';c.el.style.top=c.y+'%'}update()},
 sandcastle(){if(!S.sandcastle){S.sandcastle=true;toast('小故事：帮女孩把沙堡的最后一座塔堆好了。');update()}else toast('沙堡在夕阳里，有一点像小小的灯塔。')},icecart(){toast('冰淇淋车今天已经卖完了。空气里还留着奶油的甜味。')},
-view(){if(S.chapter===6){$('game').classList.add('cinematic');afterDialogue=finish;speak([{n:'旁白',t:'有些地方不是用来留下的。'},{n:'旁白',t:'是为了让我们知道，无论走多远，我们都有一个可以想起的地方。'}])}else toast('从这里能看见很远的海。也许晚一点再来。')}
+view(){if(S.chapter===6){afterDialogue=finish;speak([{n:'旁白',t:'有些地方不是用来留下的。'},{n:'旁白',t:'是为了让我们知道，无论走多远，我们都有一个可以想起的地方。'}])}else toast('从这里能看见很远的海。也许晚一点再来。')}
 };
 function tryReturn(){if(S.scene!=='post')return;}
 const oldPost=actions.postGate;
@@ -194,7 +194,7 @@ function openModal(h){$('modalCard').innerHTML=h;$('modal').style.display='flex'
 window.closeModal=closeModal;window.travel=travel;
 const dreamLines=['灯塔的光最后一次掠过海面。','我忽然想起，海风镇早已在许多年前，安静地从地图上褪去了颜色。','没有还在营业的邮局，也没有坐在门口等我的林爷爷。','阿泽、陈阿姨、许老师，还有海边的小女孩……那些温柔的身影，都是我为了不告别而编织出的重逢。','原来这一路送出的信，始终是写给那个不愿长大的自己。','梦醒了。海风还在，而我终于可以往前走。'];let dreamIndex=0;
 function showDreamLine(){if(dreamIndex>=dreamLines.length){$('dreamEnding').classList.remove('show');finishSummary();return}$('dreamText').textContent=dreamLines[dreamIndex++]}
-function finish(){$('dreamEnding').classList.add('show');dreamIndex=0;showDreamLine()}
+function finish(){$('game').classList.add('cinematic');$('dreamEnding').classList.add('show');dreamIndex=0;showDreamLine()}
 function finishSummary(){let hidden=[S.cat>=3,S.crab>=3,S.bench,S.photo,S.messages,S.soda,S.sandcastle].filter(Boolean).length,secret=hidden===7;$('game').classList.remove('active');$('game').classList.remove('cinematic');$('ending').classList.add('active');$('endTitle').textContent='梦醒';$('endText').innerHTML=secret?'天亮以后，你把那张泛黄的照片放回口袋。<br>照片里的人没有开口，却仍然像是在说：往前走吧。':'第二天，老车站。<br>空荡的站台上，风吹响远处一只旧铃。<br><br>叮——<br><br>你笑了一下，车继续向前。';$('stats').innerHTML=`《夏末的邮局》<br>你送出了：4 / 4 封信<br>发现的小故事：${hidden} / 7<br>隐藏互动：${hidden} / 7<br>获得结局：【${secret?'梦醒 · 下次见':'梦醒'}】`;localStorage.removeItem('summerPostSave')}
 $('dreamEnding').onclick=showDreamLine;
 preloadSceneArt();
