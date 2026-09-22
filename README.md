@@ -1,12 +1,22 @@
-# 夏末的邮局
+# 像素剧情游戏 Demo 合集
+
+本仓库收录两个可以直接游玩的 2D 剧情游戏 Demo：治愈系探索游戏《夏末的邮局》，以及悬疑像素游戏《夜班便利店》。
+
+## Demo 列表
+
+### 夏末的邮局
 
 一个可直接游玩的治愈系剧情探索小游戏 Demo。你将在夏日傍晚回到海风镇，替即将关门的老邮局送出四封迟到的信，并在一段段重逢里准备好前往远方。
 
-## 在线游玩
+在线游玩：[打开《夏末的邮局》](https://ljl-change.github.io/summer-post-office-demo/)
 
-[打开《夏末的邮局》](https://ljl-change.github.io/summer-post-office-demo/)
+### 夜班便利店
 
-## 操作方式
+一款雨夜便利店题材的像素悬疑互动游戏。玩家需要完成夜班检查、调查异常小票、面对门外来客，并在连续两夜的循环中作出选择。
+
+在线游玩：[打开《夜班便利店》](https://ljl-change.github.io/summer-post-office-demo/night-shift-store/)
+
+## 夏末的邮局操作方式
 
 - `WASD` 或方向键：移动角色
 - 靠近互动点后按 `E`：互动
@@ -25,12 +35,14 @@
 
 ## 本地运行
 
-这是一个静态网页项目。克隆仓库后，直接用浏览器打开 `index.html` 即可；也可以用任意静态文件服务器预览。
+两个 Demo 都是静态网页项目。克隆仓库后，可以直接打开对应的 `index.html`，也可以使用任意静态文件服务器预览。
 
 ```text
-index.html
-assets/       场景背景资源
-README.md
+index.html                  夏末的邮局入口
+assets/                     夏末的邮局场景资源
+night-shift-store/
+  index.html                夜班便利店入口
+README.md                   项目说明
 ```
 
 ## 部署
