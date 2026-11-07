@@ -16,6 +16,15 @@
 
 在线游玩：[打开《夜班便利店》](https://ljl-change.github.io/summer-post-office-demo/night-shift-store/)
 
+## 夜班便利店操作方式
+
+- `A` / `D`：移动
+- `W` / `空格`：跳跃
+- `E`：互动
+- `R`：重来
+- `1` / `2`：选择选项
+- 完成左上角的夜班任务
+
 ## 夏末的邮局操作方式
 
 - `WASD` 或方向键：移动角色
